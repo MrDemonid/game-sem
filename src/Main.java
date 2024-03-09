@@ -14,10 +14,8 @@ public class Main {
         PersonBase peasant = new Peasant("Garry", 1);
         PersonBase sniper = new Sniper("Tom", 2);
         PersonBase crossbowman = new Crossbowman("Sam", 2);
-
         PersonBase robber = new Robber("Sam", 3);
         PersonBase spearman = new Spearman("Bob", 4);
-
         PersonBase wizard = new Wizard("Robert", 5);
         PersonBase monk = new Monk("Pedro", 5);
 

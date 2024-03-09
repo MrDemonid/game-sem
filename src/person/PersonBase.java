@@ -20,6 +20,8 @@ public abstract class PersonBase {
     protected final int defence;              //
     protected int distance;                 // дистанция воздействия на другой объект
 
+    protected int curX, curY;
+
     /**
      * Конструктор базы
      * @param name Имя
@@ -34,12 +36,39 @@ public abstract class PersonBase {
     {
         this.name = name;
         this.priority = priority;
-        this.health = health;
-        this.maxHealth = health;
-        this.power = power;
-        this.agility = agility;
+        this.health = getRound(health, 10);
+        this.maxHealth = this.health;
+        this.power = getRound(power, 10);
+        this.agility = getRound(agility, 10);
         this.defence = defence;
         this.distance = distance;
+        this.curX = 0;
+        this.curY = 0;
+    }
+
+    /**
+     * Возвращает значение со случайной погрешностью в +-percent%
+     * @param origin Начальное значение
+     * @param percent Погрешность
+     * @return Значение с внесённой погрешностью
+     */
+    private int getRound(int origin, int percent)
+    {
+        if (percent > origin)
+            return origin;
+        int n = (origin * percent) / 100;
+        return origin + (rnd.nextInt(0, n * 2+1)- n);
+    }
+
+    /**
+     * Задаёт местоположение персонажа (нужно будет добавить проверку на границы карты)
+     * @param x По оси X
+     * @param y По оси Y
+     */
+    public void setPosition(int x, int y)
+    {
+        this.curX = x;
+        this.curY = y;
     }
 
     /**
@@ -65,6 +94,16 @@ public abstract class PersonBase {
         loss = Math.min(loss, this.health);
         this.health -= loss;
         return loss;
+    }
+
+    /**
+     * Оценка расстояния до другого персонажа
+     * @param target Объект до которого замеряем расстояние
+     * @return Расстояние от текущего персонажа до заданного
+     */
+    public int distanceTo(PersonBase target)
+    {
+        return (int) Math.sqrt(Math.pow(this.curX - target.curX, 2) + Math.pow(this.curY - target.curY, 2));
     }
 
     /**

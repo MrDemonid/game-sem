@@ -11,6 +11,11 @@ public class Peasant extends PersonBase{
 
     private final int bag;                      // сколько стрел имеем с собой
 
+    /**
+     * Создание экземпляра Крестьянина
+     * @param name имя
+     * @param priority приоритет хода
+     */
     public Peasant(String name, int priority) {
         super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
         bag = 0;

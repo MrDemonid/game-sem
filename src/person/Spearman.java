@@ -3,7 +3,7 @@ package person;
 /**
  * Класс Копейщик
  */
-public class Spearman extends Robber {
+public class Spearman extends InfantryBase {
 
     private static final int HEALTH = 1000;
     private static final int POWER = 70;
@@ -11,7 +11,14 @@ public class Spearman extends Robber {
     private static final int DEFENCE = 10;
     private static final int DISTANCE = 1;
 
-    public Spearman(String name, int priority) {
+    /**
+     * Создание экземпляра Копейщика
+     *
+     * @param name имя
+     * @param priority приоритет хода
+     */
+    public Spearman(String name, int priority)
+    {
         super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
     }
 
@@ -20,4 +27,8 @@ public class Spearman extends Robber {
         return String.format("[Копейщик] %s", name);
     }
 
+    @Override
+    public void action() {
+
+    }
 }

@@ -3,28 +3,28 @@ package person;
 /**
  * Класс Разбойник
  */
-public class Robber extends PersonBase {
+public class Robber extends InfantryBase {
+
     private static final int HEALTH = 1000;
     private static final int POWER = 80;
     private static final int AGILITY = 10;
     private static final int DEFENCE = 12;
     private static final int DISTANCE = 1;
 
-    protected int level;
-
-    protected Robber(String name, int priority, int health, int power, int agility, int defence, int distance) {
-        super(name, priority, health, power, agility, defence, distance);
-        this.level = 1;
-    }
-
+    /**
+     * Создание экземпляра Разбойника
+     *
+     * @param name имя
+     * @param priority приоритет хода
+     */
     public Robber(String name, int priority)
     {
-        this(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
+        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
     }
 
-
     @Override
-    public void action() {
+    public void action()
+    {
 
     }
 

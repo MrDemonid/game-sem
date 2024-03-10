@@ -3,7 +3,7 @@ package person;
 /**
  * Класс Колдун
  */
-public class Wizard extends PersonBase {
+public class Wizard extends MagicianBase {
 
     private static final int HEALTH = 600;
     private static final int POWER = 40;
@@ -12,29 +12,27 @@ public class Wizard extends PersonBase {
     private static final int DISTANCE = 8;
     private static final int MANA = 100;
 
-    protected int mana;
-    protected int maxMana;
-
-    protected Wizard(String name, int priority, int health, int power, int agility, int defence, int distance, int mana)
-    {
-        super(name, priority, health, power, agility, defence, distance);
-        this.mana = mana;
-        this.maxMana = mana;
-    }
-
+    /**
+     * Создание экземпляра Колдуна
+     *
+     * @param name имя
+     * @param priority приоритет хода
+     */
     public Wizard(String name, int priority)
     {
-        this(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA);
+        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA);
     }
 
 
     @Override
-    public void action() {
+    public void action()
+    {
 
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return String.format("[Колдун] %s", name);
     }
 

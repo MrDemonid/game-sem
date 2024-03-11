@@ -1,5 +1,7 @@
 package person;
 
+import java.util.ArrayList;
+
 /**
  * Базовый класс для стрелков, в данном случае для Снайперов и Арбалетчиков,
  * но можно добавить Мушкетёров или Катапульту :)
@@ -21,12 +23,29 @@ public abstract class ShooterBase extends PersonBase {
      * @param defence  Защита (% к сопротивлению урону)
      * @param distance Дистанция воздействия на другой объект (10 у мага, 1 у крестьянина и тд)
      */
-    protected ShooterBase(String name, int priority, int health, int power, int agility, int defence, int distance, int ammo, int effectiveDistance)
+    protected ShooterBase(String name, int priority, int health, int power, int agility, int defence, int distance, int ammo, int effectiveDistance, int x, int y)
     {
-        super(name, priority, health, power, agility, defence, distance);
+        super(name, priority, health, power, agility, defence, distance, x, y);
         this.ammo = ammo;
         this.effectiveDistance = effectiveDistance;
         this.level = 1;
+    }
+
+    public PersonBase findNearestEnemy(ArrayList<PersonBase> enemies)
+    {
+        PersonBase target = null;
+        float distance = Integer.MAX_VALUE;
+
+        for (PersonBase p : enemies)
+        {
+            float n = p.distanceTo(this);
+            if (n < distance)
+            {
+                distance = n;
+                target = p;
+            }
+        }
+        return target;
     }
 
     /**

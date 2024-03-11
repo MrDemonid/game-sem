@@ -19,8 +19,8 @@ public abstract class InfantryBase extends PersonBase {
      * @param defence  Защита (% к сопротивлению урону)
      * @param distance Дистанция воздействия на другой объект (10 у мага, 1 у крестьянина и тд)
      */
-    protected InfantryBase(String name, int priority, int health, int power, int agility, int defence, int distance) {
-        super(name, priority, health, power, agility, defence, distance);
+    protected InfantryBase(String name, int priority, int health, int power, int agility, int defence, int distance, int x, int y) {
+        super(name, priority, health, power, agility, defence, distance, x, y);
         level = 1;
     }
 

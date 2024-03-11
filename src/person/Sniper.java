@@ -19,15 +19,15 @@ public class Sniper extends ShooterBase {
      * @param name Имя
      * @param priority Приоритет хода
      */
-    public Sniper(String name, int priority)
+    public Sniper(String name, int x, int y)
     {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE, x, y);
     }
 
     @Override
     public String toString()
     {
-        return String.format("[Снайпер] %s", name);
+        return String.format("[Снайпер] %s", name  + " " + position.toString());
     }
 
 }

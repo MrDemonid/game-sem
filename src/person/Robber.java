@@ -17,15 +17,15 @@ public class Robber extends InfantryBase {
      * @param name имя
      * @param priority приоритет хода
      */
-    public Robber(String name, int priority)
+    public Robber(String name, int x, int y)
     {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, x, y);
     }
 
 
     @Override
     public String toString() {
-        return String.format("[Разбойник] %s", name);
+        return String.format("[Разбойник] %s", name  + " " + position.toString());
     }
 
 }

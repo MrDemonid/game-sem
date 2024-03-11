@@ -16,8 +16,8 @@ public class Peasant extends PersonBase{
      * @param name имя
      * @param priority приоритет хода
      */
-    public Peasant(String name, int priority) {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
+    public Peasant(String name, int x, int y) {
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, x, y);
         bag = 0;
     }
 
@@ -31,7 +31,7 @@ public class Peasant extends PersonBase{
 
     @Override
     public String toString() {
-        return String.format("[Крестьянин] %s", name);
+        return String.format("[Крестьянин] %s", name  + " " + position.toString());
     }
 
 }

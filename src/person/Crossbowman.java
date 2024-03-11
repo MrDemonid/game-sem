@@ -16,15 +16,14 @@ public class Crossbowman extends ShooterBase {
     /**
      * Создание экзеспляра Арбалетчика
      * @param name Имя
-     * @param priority Приоритет хода
      */
-    public Crossbowman(String name, int priority) {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE);
+    public Crossbowman(String name, int x, int y) {
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE, x, y);
     }
 
     @Override
     public String toString() {
-        return String.format("[Арбалетчик] %s", name);
+        return String.format("[Арбалетчик] %s", name + " " + position.toString());
     }
 
 }

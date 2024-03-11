@@ -17,14 +17,14 @@ public class Spearman extends InfantryBase {
      * @param name имя
      * @param priority приоритет хода
      */
-    public Spearman(String name, int priority)
+    public Spearman(String name, int x, int y)
     {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, x, y);
     }
 
     @Override
     public String toString() {
-        return String.format("[Копейщик] %s", name);
+        return String.format("[Копейщик] %s", name  + " " + position.toString());
     }
 
 }

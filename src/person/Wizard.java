@@ -16,18 +16,17 @@ public class Wizard extends MagicianBase {
      * Создание экземпляра Колдуна
      *
      * @param name имя
-     * @param priority приоритет хода
      */
-    public Wizard(String name, int priority)
+    public Wizard(String name, int x, int y)
     {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA, x, y);
     }
 
 
     @Override
     public String toString()
     {
-        return String.format("[Колдун] %s", name);
+        return String.format("[Колдун] %s", name  + " " + position.toString());
     }
 
 }

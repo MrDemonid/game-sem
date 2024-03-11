@@ -20,7 +20,7 @@ public abstract class PersonBase {
     protected final int defence;              //
     protected int distance;                 // дистанция воздействия на другой объект
 
-    protected int curX, curY;
+    protected PointXY position;
 
     /**
      * Конструктор базы
@@ -32,7 +32,7 @@ public abstract class PersonBase {
      * @param defence Защита (% к сопротивлению урону)
      * @param distance Дистанция воздействия на другой объект (10 у мага, 1 у крестьянина и тд)
      */
-    protected PersonBase(String name, int priority, int health, int power, int agility, int defence, int distance)
+    protected PersonBase(String name, int priority, int health, int power, int agility, int defence, int distance, int x, int y)
     {
         this.name = name;
         this.priority = priority;
@@ -42,8 +42,7 @@ public abstract class PersonBase {
         this.agility = getRound(agility, 10);
         this.defence = defence;
         this.distance = distance;
-        this.curX = 0;
-        this.curY = 0;
+        position = new PointXY(x, y);
     }
 
     /**
@@ -67,8 +66,8 @@ public abstract class PersonBase {
      */
     public void setPosition(int x, int y)
     {
-        this.curX = x;
-        this.curY = y;
+        position.setX(x);
+        position.setY(y);
     }
 
     /**
@@ -87,7 +86,7 @@ public abstract class PersonBase {
      */
     public int getDamage(int damage)
     {
-        boolean probability = (this.agility/3) >= rnd.nextInt(100);
+        boolean probability = (this.agility/2) >= rnd.nextInt(100);
         if (probability)
             return 0;           // увернулись
         int loss = damage - (this.defence * damage) / 100;
@@ -101,9 +100,12 @@ public abstract class PersonBase {
      * @param target Объект до которого замеряем расстояние
      * @return Расстояние от текущего персонажа до заданного
      */
-    public int distanceTo(PersonBase target)
+    public float distanceTo(PersonBase target)
     {
-        return (int) Math.sqrt(Math.pow(this.curX - target.curX, 2) + Math.pow(this.curY - target.curY, 2));
+        float x = position.getX() - target.position.getX();
+        float y = position.getY() - target.position.getY();
+        return (float) Math.sqrt(x*x + y*y);
+//        return (int) Math.sqrt(Math.pow(position.getX() - target.position.getX(), 2) + Math.pow(position.getY() - target.position.getY(), 2));
     }
 
     /**

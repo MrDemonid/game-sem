@@ -20,8 +20,8 @@ public abstract class MagicianBase extends PersonBase {
      * @param defence  Защита (% к сопротивлению урону)
      * @param distance Дистанция воздействия на другой объект (10 у мага, 1 у крестьянина и тд)
      */
-    protected MagicianBase(String name, int priority, int health, int power, int agility, int defence, int distance, int mana) {
-        super(name, priority, health, power, agility, defence, distance);
+    protected MagicianBase(String name, int priority, int health, int power, int agility, int defence, int distance, int mana, int x, int y) {
+        super(name, priority, health, power, agility, defence, distance, x, y);
         this.mana = mana;
         this.maxMana = mana;
     }

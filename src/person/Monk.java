@@ -13,17 +13,16 @@ public class Monk extends MagicianBase {
      * Создание экземпляра Монаха
      *
      * @param name имя
-     * @param priority приоритет хода
      */
-    public Monk(String name, int priority)
+    public Monk(String name, int x, int y)
     {
-        super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA, x, y);
     }
 
     @Override
     public String toString()
     {
-        return String.format("[Монах] %s", name);
+        return String.format("[Монах] %s", name  + " " + position.toString());
     }
 
 }

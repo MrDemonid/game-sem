@@ -21,12 +21,6 @@ public class Monk extends MagicianBase {
     }
 
     @Override
-    public void action()
-    {
-
-    }
-
-    @Override
     public String toString()
     {
         return String.format("[Монах] %s", name);

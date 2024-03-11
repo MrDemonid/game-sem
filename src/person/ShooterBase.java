@@ -28,4 +28,14 @@ public abstract class ShooterBase extends PersonBase {
         this.effectiveDistance = effectiveDistance;
         this.level = 1;
     }
+
+    /**
+     * Выбираем цель и атакуем, если есть стрелы
+     */
+    @Override
+    public void action()
+    {
+
+    }
+
 }

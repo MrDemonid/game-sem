@@ -23,12 +23,6 @@ public class Crossbowman extends ShooterBase {
     }
 
     @Override
-    public void action()
-    {
-
-    }
-
-    @Override
     public String toString() {
         return String.format("[Арбалетчик] %s", name);
     }

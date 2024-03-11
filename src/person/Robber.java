@@ -22,11 +22,6 @@ public class Robber extends InfantryBase {
         super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE);
     }
 
-    @Override
-    public void action()
-    {
-
-    }
 
     @Override
     public String toString() {

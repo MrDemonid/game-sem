@@ -27,8 +27,4 @@ public class Spearman extends InfantryBase {
         return String.format("[Копейщик] %s", name);
     }
 
-    @Override
-    public void action() {
-
-    }
 }

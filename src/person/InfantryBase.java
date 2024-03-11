@@ -24,4 +24,10 @@ public abstract class InfantryBase extends PersonBase {
         level = 1;
     }
 
+    @Override
+    public void action()
+    {
+
+    }
+
 }

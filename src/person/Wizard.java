@@ -25,12 +25,6 @@ public class Wizard extends MagicianBase {
 
 
     @Override
-    public void action()
-    {
-
-    }
-
-    @Override
     public String toString()
     {
         return String.format("[Колдун] %s", name);

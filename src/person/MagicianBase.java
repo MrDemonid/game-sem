@@ -26,4 +26,11 @@ public abstract class MagicianBase extends PersonBase {
         this.maxMana = mana;
     }
 
+
+    @Override
+    public void action()
+    {
+
+    }
+
 }

@@ -24,16 +24,6 @@ public class Sniper extends ShooterBase {
         super(name, priority, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE);
     }
 
-
-    /**
-     * Выбираем цель и атакуем, если есть стрелы
-     */
-    @Override
-    public void action()
-    {
-
-    }
-
     @Override
     public String toString()
     {

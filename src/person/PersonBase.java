@@ -100,19 +100,6 @@ public abstract class PersonBase {
     }
 
     /**
-     * Оценка расстояния до другого персонажа
-     * @param target Объект до которого замеряем расстояние
-     * @return Расстояние от текущего персонажа до заданного
-     */
-    public float distanceTo(PersonBase target)
-    {
-        float x = position.getX() - target.position.getX();
-        float y = position.getY() - target.position.getY();
-        return (float) Math.sqrt(x*x + y*y);
-//        return (int) Math.sqrt(Math.pow(position.getX() - target.position.getX(), 2) + Math.pow(position.getY() - target.position.getY(), 2));
-    }
-
-    /**
      * Поиск ближайшего персонажа из доступных
      * @param persons Массив персон (врагов или своих)
      * @return        Ближайший к текущему персонаж
@@ -124,7 +111,7 @@ public abstract class PersonBase {
 
         for (PersonBase p : persons)
         {
-            float dist = distanceTo(p);
+            float dist = position.distanceTo(p.position);
             if (dist < minDistance)
             {
                 minDistance = dist;

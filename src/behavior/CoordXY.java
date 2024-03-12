@@ -1,5 +1,7 @@
 package behavior;
 
+import person.PersonBase;
+
 /**
  * Класс для позиционирования персонажей
  */
@@ -81,6 +83,20 @@ public class CoordXY {
             curY += dy;
         }
     }
+
+    /**
+     * Вычисляет расстояние расстояние до другой точки
+     * 
+     * @param target До куда считаем
+     * @return       Расстояние
+     */
+    public float distanceTo(CoordXY target)
+    {
+        float x = curX - target.getX();
+        float y = curY - target.getY();
+        return (float) Math.sqrt(x*x + y*y);
+    }
+
 
     public String toString()
     {

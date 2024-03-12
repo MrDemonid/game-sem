@@ -34,12 +34,10 @@ public class CoordXY {
         this.curY = curY;
     }
 
-    public static void setWidth(int width) {
-        CoordXY.width = width;
-    }
-
-    public static void setHeight(int height) {
-        CoordXY.height = height;
+    public void setXY(int x, int y)
+    {
+        curX = x;
+        curY = y;
     }
 
     public int getX() {
@@ -48,6 +46,14 @@ public class CoordXY {
 
     public int getY() {
         return curY;
+    }
+
+    public static void setWidth(int width) {
+        CoordXY.width = width;
+    }
+
+    public static void setHeight(int height) {
+        CoordXY.height = height;
     }
 
     public static int getWidth() {

@@ -64,14 +64,22 @@ public abstract class PersonBase {
     }
 
     /**
-     * Задаёт местоположение персонажа (нужно будет добавить проверку на границы карты)
+     * Задаёт местоположение персонажа
      * @param x По оси X
      * @param y По оси Y
      */
     public void setPosition(int x, int y)
     {
-        position.setX(x);
-        position.setY(y);
+        position.setXY(x, y);
+    }
+
+    /**
+     * Возвращает текущее местоположение персонажа
+     * @return
+     */
+    public CoordXY getPosition()
+    {
+        return position;
     }
 
     /**

@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 public class Peasant extends PersonBase{
 
     private static final int HEALTH = 500;
@@ -13,11 +15,13 @@ public class Peasant extends PersonBase{
 
     /**
      * Создание экземпляра Крестьянина
-     * @param name имя
-     * @param priority приоритет хода
+     * 
+     * @param name Имя
+     * @param pos  Положение в прогстранстве
+     *
      */
-    public Peasant(String name, int x, int y) {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, x, y);
+    public Peasant(String name, CoordXY pos) {
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
         bag = 0;
     }
 

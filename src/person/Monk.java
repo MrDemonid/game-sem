@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 public class Monk extends MagicianBase {
 
     private static final int HEALTH = 600;
@@ -14,9 +16,9 @@ public class Monk extends MagicianBase {
      *
      * @param name имя
      */
-    public Monk(String name, int x, int y)
+    public Monk(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA, x, y);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA, pos);
     }
 
     @Override

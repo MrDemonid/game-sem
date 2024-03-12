@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81c33dbb-2ec7-4d58-8cbc-644715752354" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Names.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/person/PointXY.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/behavior/HeroesNames.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Names.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Crossbowman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/InfantryBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/InfantryBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/MagicianBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/MagicianBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Monk.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Peasant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/PersonBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/PersonBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/PointXY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behavior/CoordXY.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/Robber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Robber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/ShooterBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/ShooterBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Sniper.java" afterDir="false" />

@@ -1,5 +1,8 @@
 package person;
 
+import behavior.CoordXY;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,14 +16,14 @@ public abstract class PersonBase {
 
     protected String name;
     protected int priority;                 // приоритет хода
-    protected int health;                       // здоровье
+    protected int health;                   // здоровье
     protected final int maxHealth;
-    protected final int power;                //
-    protected final int agility;                  // ловкость
-    protected final int defence;              //
+    protected final int power;              //
+    protected final int agility;            // ловкость
+    protected final int defence;            //
     protected int distance;                 // дистанция воздействия на другой объект
 
-    protected PointXY position;
+    protected CoordXY position;             // позиционирование и перемещение
 
     /**
      * Конструктор базы
@@ -31,8 +34,9 @@ public abstract class PersonBase {
      * @param agility Ловкость (%). 3 ловкости = 1% к увороту, и 10 ловкости = 1% к критическому удару
      * @param defence Защита (% к сопротивлению урону)
      * @param distance Дистанция воздействия на другой объект (10 у мага, 1 у крестьянина и тд)
+     * @param pos Положение в прогстранстве
      */
-    protected PersonBase(String name, int priority, int health, int power, int agility, int defence, int distance, int x, int y)
+    protected PersonBase(String name, int priority, int health, int power, int agility, int defence, int distance, CoordXY pos)
     {
         this.name = name;
         this.priority = priority;
@@ -42,7 +46,7 @@ public abstract class PersonBase {
         this.agility = getRound(agility, 10);
         this.defence = defence;
         this.distance = distance;
-        position = new PointXY(x, y);
+        this.position = pos;
     }
 
     /**
@@ -106,6 +110,28 @@ public abstract class PersonBase {
         float y = position.getY() - target.position.getY();
         return (float) Math.sqrt(x*x + y*y);
 //        return (int) Math.sqrt(Math.pow(position.getX() - target.position.getX(), 2) + Math.pow(position.getY() - target.position.getY(), 2));
+    }
+
+    /**
+     * Поиск ближайшего персонажа из доступных
+     * @param persons Массив персон (врагов или своих)
+     * @return        Ближайший к текущему персонаж
+     */
+    public PersonBase findNearestPerson(ArrayList<PersonBase> persons)
+    {
+        PersonBase target = null;
+        float minDistance = Float.MAX_VALUE;
+
+        for (PersonBase p : persons)
+        {
+            float dist = distanceTo(p);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                target = p;
+            }
+        }
+        return target;
     }
 
     /**

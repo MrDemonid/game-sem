@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 /**
  * Класс Колдун
  */
@@ -17,9 +19,9 @@ public class Wizard extends MagicianBase {
      *
      * @param name имя
      */
-    public Wizard(String name, int x, int y)
+    public Wizard(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA, x, y);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, MANA, pos);
     }
 
 

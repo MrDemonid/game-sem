@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 /**
  * Класс Разбойник
  */
@@ -14,12 +16,12 @@ public class Robber extends InfantryBase {
     /**
      * Создание экземпляра Разбойника
      *
-     * @param name имя
-     * @param priority приоритет хода
+     * @param name Имя
+     * @param pos  Положение в прогстранстве
      */
-    public Robber(String name, int x, int y)
+    public Robber(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, x, y);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
     }
 
 

@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 /**
  * Класс Снайпер (лучник)
  */
@@ -16,12 +18,13 @@ public class Sniper extends ShooterBase {
 
     /**
      * Создание экзеспляра Снайпера
+     *
      * @param name Имя
-     * @param priority Приоритет хода
+     * @param pos  Положение в прогстранстве
      */
-    public Sniper(String name, int x, int y)
+    public Sniper(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE, x, y);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE, pos);
     }
 
     @Override

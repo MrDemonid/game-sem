@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 /**
  * Класс Копейщик
  */
@@ -14,12 +16,12 @@ public class Spearman extends InfantryBase {
     /**
      * Создание экземпляра Копейщика
      *
-     * @param name имя
-     * @param priority приоритет хода
+     * @param name Имя
+     * @param pos  Положение в прогстранстве
      */
-    public Spearman(String name, int x, int y)
+    public Spearman(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, x, y);
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 /**
  * Класс Арбалетчик
  */
@@ -16,9 +18,10 @@ public class Crossbowman extends ShooterBase {
     /**
      * Создание экзеспляра Арбалетчика
      * @param name Имя
+     * @param pos  Положение в прогстранстве
      */
-    public Crossbowman(String name, int x, int y) {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE, x, y);
+    public Crossbowman(String name, CoordXY pos) {
+        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, ARROWS, EFFECTIVE_DISTANCE, pos);
     }
 
     @Override

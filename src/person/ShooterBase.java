@@ -1,5 +1,7 @@
 package person;
 
+import behavior.CoordXY;
+
 import java.util.ArrayList;
 
 /**
@@ -22,30 +24,16 @@ public abstract class ShooterBase extends PersonBase {
      * @param agility  Ловкость (%). 3 ловкости = 1% к увороту, и 10 ловкости = 1% к критическому удару
      * @param defence  Защита (% к сопротивлению урону)
      * @param distance Дистанция воздействия на другой объект (10 у мага, 1 у крестьянина и тд)
+     * @param ammo Количество боезапаса (стрел)
+     * @param effectiveDistance Эффективная дальность стрельбы
+     * @param pos Положение в прогстранстве
      */
-    protected ShooterBase(String name, int priority, int health, int power, int agility, int defence, int distance, int ammo, int effectiveDistance, int x, int y)
+    protected ShooterBase(String name, int priority, int health, int power, int agility, int defence, int distance, int ammo, int effectiveDistance, CoordXY pos)
     {
-        super(name, priority, health, power, agility, defence, distance, x, y);
+        super(name, priority, health, power, agility, defence, distance, pos);
         this.ammo = ammo;
         this.effectiveDistance = effectiveDistance;
         this.level = 1;
-    }
-
-    public PersonBase findNearestEnemy(ArrayList<PersonBase> enemies)
-    {
-        PersonBase target = null;
-        float distance = Integer.MAX_VALUE;
-
-        for (PersonBase p : enemies)
-        {
-            float n = p.distanceTo(this);
-            if (n < distance)
-            {
-                distance = n;
-                target = p;
-            }
-        }
-        return target;
     }
 
     /**

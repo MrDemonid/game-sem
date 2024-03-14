@@ -5,6 +5,11 @@
 Расположить классы в пакет так, чтобы в основной программе небыло видно их полей.
 В не абстрактных классах переопределить метод toString() так чтобы он возвращал название класса или имя.
 Создать в основной программе по одному обьекту каждого не абстрактного класса и вывести в консоль его имя.
+
+Добавить в абстрактный класс int поле инициатива. В классах наследников инициализировать это поле.
+Крестьянин = 0, маги=1, пехота=2, лучники=3.
+В мэйне сделать так, чтобы сначала делали ход персонажи с наивысшей инициативой
+из обеих комманд а с наименьшей в конце.
 */
 
 import behavior.CoordXY;
@@ -18,25 +23,31 @@ public class Main {
 
     static ArrayList<PersonBase> red = new ArrayList<>();
     static ArrayList<PersonBase> blue = new ArrayList<>();
+    static ArrayList<PersonBase> all = new ArrayList<>();
 
     public static void main(String[] args) {
         createTeam(red, 10, 0);
         createTeam(blue, 10, 3);
-        System.out.println(red + "\n");
-        System.out.println(blue);
+        all.addAll(red);
+        all.addAll(blue);
+//        all.sort(new PrioritySort());
+        all.sort((o1, o2) -> Integer.compare(o2.priority, o1.priority));
 
-        System.out.println("\nTest find nearest enemy");
-        Sniper sniper = new Sniper(HeroesNames.getRandomName(), new CoordXY(7, 5));
-        PersonBase target = sniper.findNearestPerson(blue);
-        System.out.println(sniper + ": nearest blue target at " + target);
-        target = sniper.findNearestPerson(red);
-        System.out.println(sniper + ": nearest red target at " + target);
-        System.out.println();
-        Robber robber = new Robber(HeroesNames.getRandomName(), new CoordXY(3, 1));
-        target = robber.findNearestPerson(blue);
-        System.out.println(robber + ": nearest blue target at " + target);
-        target = robber.findNearestPerson(red);
-        System.out.println(robber + ": nearest red target at " + target);
+        for (PersonBase p : all)
+        {
+            System.out.println(p + " ходит.");
+            if (red.contains(p))
+            {
+//                if (p.getClass().getSimpleName().equals("Wizard"))
+//                {
+//                    ...
+//                }
+                p.step(blue);
+
+            } else {
+                p.step(red);
+            }
+        }
 
     }
 

@@ -36,13 +36,49 @@ public abstract class ShooterBase extends PersonBase {
         this.level = 1;
     }
 
-    /**
-     * Выбираем цель и атакуем, если есть стрелы
-     */
-    @Override
-    public void action()
+    protected void shot(PersonBase target)
     {
+        System.out.println(name + ": стреляет по " + target.name);
+        ammo--;
+        float dist = position.distanceTo(target.position);
+        int damage = getRound(power, 10) + (power / 10) * level;
+        if (dist > effectiveDistance)
+            damage *= 0.5f;
+        else if (dist < effectiveDistance)
+            damage *= 1.2f;
 
+        boolean critical = (this.agility/3) >= rnd.nextInt(100);
+        if (critical)
+        {
+            damage *= 2.0f;
+            System.out.println(name + ": наносит критический урон!");
+        }
+        int res = target.getDamage(damage);
+        System.out.println("   и наносит " + res + " повреждений.");
+    }
+
+    @Override
+    public void step(ArrayList<PersonBase> enemies)
+    {
+        if (health <= 0 || ammo <= 0)
+        {
+            if (ammo <= 0)
+            {
+                System.out.println(name + ": " + "подайте стрел!");
+            }
+            return;
+        }
+        PersonBase target = this.findNearestPerson(enemies);
+        if (target != null)
+        {
+            shot(target);
+        }
     }
 
 }
+
+/*
+Доработать классы лучников. Лучник должен во первых проверить жив ли он и есть ли у него стрелы,
+если нет то завершить метод. Есль всё да, то найти ближайшего противника и выстрелить по немы и,
+соответственно потратить одну стрелу. Реализовать весь функционал лучников в методе step().
+ */

@@ -21,7 +21,7 @@ public class Robber extends InfantryBase {
      */
     public Robber(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
+        super(name, 2, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
     }
 
 
@@ -29,5 +29,6 @@ public class Robber extends InfantryBase {
     public String toString() {
         return String.format("[Разбойник] %s", name  + " " + position.toString());
     }
+
 
 }

@@ -1,5 +1,6 @@
 package person;
 
+import behavior.ActionInterface;
 import behavior.CoordXY;
 
 import java.util.ArrayList;
@@ -8,14 +9,14 @@ import java.util.Random;
 /**
  * База для персонажей.
  */
-public abstract class PersonBase {
+public abstract class PersonBase implements ActionInterface {
     protected static Random rnd;
     static {
         rnd = new Random();
     }
 
     protected String name;
-    protected int priority;                 // приоритет хода
+    public int priority;                 // приоритет хода
     protected int health;                   // здоровье
     protected final int maxHealth;
     protected final int power;              //
@@ -55,7 +56,7 @@ public abstract class PersonBase {
      * @param percent Погрешность
      * @return Значение с внесённой погрешностью
      */
-    private int getRound(int origin, int percent)
+    protected int getRound(int origin, int percent)
     {
         if (percent > origin)
             return origin;
@@ -100,10 +101,18 @@ public abstract class PersonBase {
     {
         boolean probability = (this.agility/2) >= rnd.nextInt(100);
         if (probability)
+        {
+            System.out.println(name + ": увернулся!");
             return 0;           // увернулись
+        }
+
         int loss = damage - (this.defence * damage) / 100;
         loss = Math.min(loss, this.health);
         this.health -= loss;
+        if (this.health <= 0)
+        {
+            System.out.println(name + ": вышел из чата!");
+        }
         return loss;
     }
 
@@ -128,12 +137,6 @@ public abstract class PersonBase {
         }
         return target;
     }
-
-    /**
-     * Действие персонажа (ход)
-     */
-    abstract public void action();
-
 
 //    @Override
 //    public String toString()

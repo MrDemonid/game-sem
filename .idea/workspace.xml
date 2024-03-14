@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81c33dbb-2ec7-4d58-8cbc-644715752354" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/behavior/ActionInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/person/PrioritySort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/behavior/CoordXY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behavior/CoordXY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Crossbowman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/InfantryBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/InfantryBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/MagicianBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/MagicianBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Monk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Peasant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/person/PersonBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/PersonBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Robber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Robber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/ShooterBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/ShooterBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Sniper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Spearman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/person/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -80,15 +93,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -21,7 +21,7 @@ public class Spearman extends InfantryBase {
      */
     public Spearman(String name, CoordXY pos)
     {
-        super(name, 0, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
+        super(name, 2, HEALTH, POWER, AGILITY, DEFENCE, DISTANCE, pos);
     }
 
     @Override

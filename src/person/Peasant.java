@@ -2,6 +2,8 @@ package person;
 
 import behavior.CoordXY;
 
+import java.util.ArrayList;
+
 public class Peasant extends PersonBase{
 
     private static final int HEALTH = 500;
@@ -25,18 +27,14 @@ public class Peasant extends PersonBase{
         bag = 0;
     }
 
-    /**
-     * Ход крестьянина (если загружены, то к стрелку, иначе на "базу" загружаться)
-     */
-    @Override
-    public void action() {
-
-    }
-
     @Override
     public String toString() {
         return String.format("[Крестьянин] %s", name  + " " + position.toString());
     }
 
+    @Override
+    public void step(ArrayList<PersonBase> enemies) {
+
+    }
 }
 

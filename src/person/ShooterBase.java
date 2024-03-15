@@ -65,7 +65,7 @@ public abstract class ShooterBase extends PersonBase {
             else
                 System.out.print(" и наносит " + res + " повреждений.");
         } else {
-            System.out.print(" но " + target.name + " увернулся!");
+            System.out.print(", но " + target.name + " увернулся!");
         }
         if (target.health <= 0)
         {

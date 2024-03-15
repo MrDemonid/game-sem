@@ -36,9 +36,14 @@ public abstract class ShooterBase extends PersonBase {
         this.level = 1;
     }
 
+    /**
+     * Атака противника
+     * 
+     * @param target Противник
+     */
     protected void shot(PersonBase target)
     {
-        System.out.println(name + ": стреляет по " + target.name);
+        System.out.print(" Стреляет по " + target);
         ammo--;
         float dist = position.distanceTo(target.position);
         int damage = getRound(power, 10) + (power / 10) * level;
@@ -51,12 +56,28 @@ public abstract class ShooterBase extends PersonBase {
         if (critical)
         {
             damage *= 2.0f;
-            System.out.println(name + ": наносит критический урон!");
         }
         int res = target.getDamage(damage);
-        System.out.println("   и наносит " + res + " повреждений.");
+        if (res > 0)
+        {
+            if (critical)
+                System.out.print(" и наносит критический удар в " + res + " повреждений!");
+            else
+                System.out.print(" и наносит " + res + " повреждений.");
+        } else {
+            System.out.print(" но " + target.name + " увернулся!");
+        }
+        if (target.health <= 0)
+        {
+            System.out.print("\n" + target + " вышел из чата!");
+        }
     }
 
+    /**
+     * Ход персонажа
+     *
+     * @param enemies Список его врагов
+     */
     @Override
     public void step(ArrayList<PersonBase> enemies)
     {
@@ -64,7 +85,7 @@ public abstract class ShooterBase extends PersonBase {
         {
             if (ammo <= 0)
             {
-                System.out.println(name + ": " + "подайте стрел!");
+                System.out.print(name + ": " + "подайте стрел!");
             }
             return;
         }
@@ -76,9 +97,3 @@ public abstract class ShooterBase extends PersonBase {
     }
 
 }
-
-/*
-Доработать классы лучников. Лучник должен во первых проверить жив ли он и есть ли у него стрелы,
-если нет то завершить метод. Есль всё да, то найти ближайшего противника и выстрелить по немы и,
-соответственно потратить одну стрелу. Реализовать весь функционал лучников в методе step().
- */

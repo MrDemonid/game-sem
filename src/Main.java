@@ -35,7 +35,7 @@ public class Main {
 
         for (PersonBase p : all)
         {
-            System.out.println(p + " ходит.");
+            System.out.print(p + " ходит. ");
             if (red.contains(p))
             {
 //                if (p.getClass().getSimpleName().equals("Wizard"))
@@ -47,6 +47,7 @@ public class Main {
             } else {
                 p.step(red);
             }
+            System.out.println();
         }
 
     }

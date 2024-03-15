@@ -4,6 +4,9 @@ import person.PersonBase;
 
 import java.util.Comparator;
 
+/**
+ * Класс сортировки персонажей по их приоритету (скорости/очерёдности хода)
+ */
 public class PrioritySort  implements Comparator<PersonBase> {
 
     @Override

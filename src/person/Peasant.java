@@ -27,14 +27,20 @@ public class Peasant extends PersonBase{
         bag = 0;
     }
 
+    /**
+     * Ход персонажа
+     *
+     * @param enemies Список его врагов
+     */
+    @Override
+    public void step(ArrayList<PersonBase> enemies) {
+
+    }
+
     @Override
     public String toString() {
         return String.format("[Крестьянин] %s", name  + " " + position.toString());
     }
 
-    @Override
-    public void step(ArrayList<PersonBase> enemies) {
-
-    }
 }
 

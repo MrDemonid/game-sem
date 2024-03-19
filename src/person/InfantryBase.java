@@ -1,6 +1,5 @@
 package person;
 
-import behavior.ActionInterface;
 import behavior.CoordXY;
 
 import java.util.ArrayList;
@@ -31,24 +30,30 @@ public abstract class InfantryBase extends PersonBase {
         level = 1;
     }
 
-    private void move(PersonBase target)
+    private void move(PersonBase target, ArrayList<PersonBase> friends)
     {
-        float vx = target.position.getX() - position.getX();
-        float vy = target.position.getY() - position.getY();
-        float len = (float) Math.sqrt(vx*vx + vy*vy);
-        if (len != 0f)
-        {
-            len = 1.0f / len;
-            vx *= len;
-            vy *= len;
+        CoordXY delta = position.getDelta(target.position);
+        CoordXY newPoz = new CoordXY(position.getX(),position.getY());
+
+        int dx = delta.getX();
+        if (dx != 0)
+            dx = Math.abs(dx)/dx;
+        int dy = delta.getY();
+        if (dy != 0)
+            dy = Math.abs(dy)/dy;
+        if (dx != 0 && dy != 0)
+            dy = 0;
+        newPoz.increment(dx,dy);
+
+        for (PersonBase vin: friends){
+            if(vin.position.equal(newPoz))
+                return;
         }
-        int nx = (int) (position.getX() + (vx + 0.5f));
-        int ny = (int) (position.getY() + (vy + 0.5f));
-        System.out.println(name + ": перемещается на (" + nx + ", " + ny + ")");
-        position.moveTo(nx, ny);
+        position = newPoz;
+        System.out.println(name + ": перемещается на (" + position.getX() + ", " + position.getY() + ")");
     }
 
-    private void kick(PersonBase target, boolean isMoved)
+    private void attack(PersonBase target, boolean isMoved)
     {
         System.out.print(name + ": бьёт " + target);
         int damage = getRound(power, 10) + (power / 10) * level;
@@ -57,6 +62,9 @@ public abstract class InfantryBase extends PersonBase {
         {
             damage *= 2.0f;
         }
+        if (isMoved)
+            damage /= 2;                        // удар с хода
+
         int res = target.getDamage(damage);
         if (res > 0)
         {
@@ -74,27 +82,24 @@ public abstract class InfantryBase extends PersonBase {
     }
 
     @Override
-    public void step(ArrayList<PersonBase> enemies) {
-        if (health <= 0)
-            return;
+    public void step(ArrayList<PersonBase> enemies, ArrayList<PersonBase> friends)
+    {
         PersonBase target = this.findNearestPerson(enemies);
-        if (target!= null)
+        if (health <= 0 || target == null)
+            return;
+
+        if (position.distanceTo(target.position) < 1.5f)
         {
-            float dist = position.distanceTo(target.position);
-            if (dist <= 1.0f)
+            // бьём
+            attack(target, false);
+        } else {
+            move(target, friends);
+            if (position.distanceTo(target.position) < 1.5f)
             {
-                // бьём
-                kick(target, false);
-            } else {
-                move(target);
-                if (position.distanceTo(target.position) <= 1.0f)
-                {
-                    // бьём с ходу, с меньшей силой
-                    kick(target, true);
-                }
+                // бьём с ходу, с меньшей силой
+                attack(target, true);
             }
         }
 
     }
-
 }

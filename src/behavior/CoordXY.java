@@ -87,6 +87,13 @@ public class CoordXY {
         return (float) Math.sqrt(x*x + y*y);
     }
 
+    public float fastDistance(CoordXY target, int dx, int dy)
+    {
+        float tx = curX+dx - target.getX();
+        float ty = curY+dy - target.getY();
+        return (tx*tx + ty*ty);
+    }
+
     /**
      * Возвращает разницу координат
      * @param to

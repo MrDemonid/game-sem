@@ -30,7 +30,7 @@ public class Sniper extends ShooterBase {
     @Override
     public String toString()
     {
-        return String.format("[Снайпер] %s", name  + " " + position.toString());
+        return String.format("[Снайпер] %s, ❤\uFE0F=%d, \uD83C\uDFF9=%d, %s", name, health, ammo, position.toString());
     }
 
     @Override

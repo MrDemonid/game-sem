@@ -26,8 +26,9 @@ public class Spearman extends InfantryBase {
 
     @Override
     public String toString() {
-        return String.format("[Пикенёр] %s", name  + " " + position.toString());
+        return String.format("[Пикенёр] %s, ❤\uFE0F=%d, %s", name, health, position.toString());
     }
+
 
     @Override
     public String getInfo() {

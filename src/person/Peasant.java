@@ -44,11 +44,11 @@ public class Peasant extends PersonBase{
 
     @Override
     public String toString() {
-        return "[Крестьянин]{" +
+        return "[Крестьянин] " +
                 name +
-                ", ❤=" + health +
-                ", " + position +
-                '}';
+                ", ❤\uFE0F=" + health +
+                ", " + position;
     }
 }
+
 

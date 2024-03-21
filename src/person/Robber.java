@@ -27,8 +27,11 @@ public class Robber extends InfantryBase {
 
     @Override
     public String toString() {
-        return String.format("[Разбойник] %s", name  + " " + position.toString());
+        return String.format("[Разбойник] %s, ❤\uFE0F=%d, %s", name, health, position.toString());
     }
+
+
+
 
 
     @Override

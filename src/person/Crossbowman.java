@@ -29,4 +29,8 @@ public class Crossbowman extends ShooterBase {
         return String.format("[Арбалетчик] %s", name + " " + position.toString());
     }
 
+    @Override
+    public String getInfo() {
+        return "Арбалетчик " + history;
+    }
 }

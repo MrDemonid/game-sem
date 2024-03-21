@@ -31,4 +31,8 @@ public class Robber extends InfantryBase {
     }
 
 
+    @Override
+    public String getInfo() {
+        return "Разбойник " + history;
+    }
 }

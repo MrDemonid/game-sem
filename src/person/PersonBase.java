@@ -26,6 +26,8 @@ public abstract class PersonBase implements ActionInterface {
 
     protected CoordXY position;             // позиционирование и перемещение
 
+    protected String history;
+
     /**
      * Конструктор базы
      * @param name Имя
@@ -48,6 +50,11 @@ public abstract class PersonBase implements ActionInterface {
         this.defence = defence;
         this.distance = distance;
         this.position = pos;
+        this.history = "";
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     /**
@@ -81,6 +88,11 @@ public abstract class PersonBase implements ActionInterface {
     public CoordXY getPosition()
     {
         return position;
+    }
+
+    public int[] getCoords()
+    {
+        return new int[] {position.getY(), position.getX()};
     }
 
     /**

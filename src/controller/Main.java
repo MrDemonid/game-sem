@@ -23,42 +23,43 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static ArrayList<PersonBase> red = new ArrayList<>();
-    public static ArrayList<PersonBase> blue = new ArrayList<>();
-    public static ArrayList<PersonBase> all = new ArrayList<>();
+    public static ArrayList<PersonBase> greenPersons = new ArrayList<>();
+    public static ArrayList<PersonBase> bluePersons = new ArrayList<>();
+    public static ArrayList<PersonBase> allPersons = new ArrayList<>();
 
     public static void main(String[] args) {
-        createTeam(red, 10, 0);
-        createTeam(blue, 10, 3);
-        all.addAll(blue);
-        all.addAll(red);
+        createTeam(greenPersons, 10, 0);
+        createTeam(bluePersons, 10, 3);
+        System.out.println(greenPersons);
+        allPersons.addAll(bluePersons);
+        allPersons.addAll(greenPersons);
 //        all.sort(new PrioritySort());
-        all.sort((o1, o2) -> Integer.compare(o2.priority, o1.priority));
+        allPersons.sort((o1, o2) -> Integer.compare(o2.priority, o1.priority));
 
 //        for (int i = 0; i < 30; i++) {
         Scanner in = new Scanner(System.in);
         while (true)
           {
             View.view();
-            for (PersonBase p : all) {
+            for (PersonBase p : allPersons) {
 //                System.out.print(p + " ходит. ");
-                if (red.contains(p)) {
-                    p.step(blue, red);
+                if (greenPersons.contains(p)) {
+                    p.step(bluePersons, greenPersons);
 
                 } else {
-                    p.step(red, blue);
+                    p.step(greenPersons, bluePersons);
                 }
 //                System.out.println();
             }
             in.nextLine();
-            if (!isLiving(red))
+            if (!isLiving(greenPersons))
             {
-                System.out.println("Blue wins!");
+                System.out.println("Blue team wins!");
                 break;
             }
-            if (!isLiving(blue))
+            if (!isLiving(bluePersons))
             {
-                System.out.println("Red wins!");
+                System.out.println("Green wins!");
                 break;
             }
 
@@ -78,32 +79,32 @@ public class Main {
     public static void createTeam(ArrayList<PersonBase> team, int num, int start)
     {
         Random rnd = new Random();
-        int cy = 1;
+        int cy = 0;
         while (num-- > 0)
         {
             int n = start + rnd.nextInt(4);
             switch (n)
             {
                 case 0:
-                    team.add(new Crossbowman(HeroesNames.getRandomName(), new CoordXY(1, cy)));
+                    team.add(new Crossbowman(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 1:
-                    team.add(new Spearman(HeroesNames.getRandomName(), new CoordXY(1, cy)));
+                    team.add(new Spearman(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 2:
-                    team.add(new Wizard(HeroesNames.getRandomName(), new CoordXY(1, cy)));
+                    team.add(new Wizard(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 3:
-                    team.add(new Peasant(HeroesNames.getRandomName(), new CoordXY(start*3+1, cy)));
+                    team.add(new Peasant(HeroesNames.getRandomName(), new CoordXY(start*3, cy)));
                     break;
                 case 4:
-                    team.add(new Sniper(HeroesNames.getRandomName(), new CoordXY(10, cy)));
+                    team.add(new Sniper(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 5:
-                    team.add(new Monk(HeroesNames.getRandomName(), new CoordXY(10, cy)));
+                    team.add(new Monk(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 6:
-                    team.add(new Robber(HeroesNames.getRandomName(), new CoordXY(10, cy)));
+                    team.add(new Robber(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 default:
                     System.out.println("ERROR! Пересмотри алгоритм, ламер!");

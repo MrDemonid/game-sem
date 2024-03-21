@@ -1,5 +1,6 @@
 package view;
 
+import behavior.CoordXY;
 import person.PersonBase;
 import controller.Main;
 
@@ -28,22 +29,28 @@ public class View {
                 .replace('-', '─');
     }
 
-    private static String getChar(int x, int y){
+    private static String getChar(int x, int y)
+    {
         String out = "| ";
-        for (PersonBase human: Main.all) {
+        for (PersonBase human: Main.allPersons)
+        {
+//            CoordXY pos = human.getPosition();
+//            if (pos.getX() == x && pos.getY() == y)
+//            {
             if (human.getCoords()[0] == x && human.getCoords()[1] == y){
                 if (human.getHealth() == 0)
                 {
                     out = "|" + (AnsyView.ANSI_RED + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
                     break;
                 }
-                if (Main.red.contains(human)) out = "|" + (AnsyView.ANSI_GREEN + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
-                if (Main.blue.contains(human)) out = "|" + (AnsyView.ANSI_BLUE + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
+                if (Main.greenPersons.contains(human)) out = "|" + (AnsyView.ANSI_GREEN + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
+                if (Main.bluePersons.contains(human)) out = "|" + (AnsyView.ANSI_BLUE + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
                 break;
             }
         }
         return out;
     }
+
     public static void view() {
         if (step == 1 ){
             System.out.print(AnsyView.ANSI_RED + "First step" + AnsyView.ANSI_RESET);
@@ -51,7 +58,7 @@ public class View {
             System.out.print(AnsyView.ANSI_RED + "Step:" + step + AnsyView.ANSI_RESET);
         }
         step++;
-        Main.all.forEach((v) -> l = Math.max(l, v.toString().length()));
+        Main.allPersons.forEach((v) -> l = Math.max(l, v.toString().length()));
         System.out.print("_".repeat(l*2));
         System.out.println();
         System.out.print(top10 + "    ");
@@ -59,32 +66,32 @@ public class View {
         //for (int i = 0; i < l[0]-9; i++)
         System.out.print(" ".repeat(l-9));
         System.out.println(":\tGreen side");
-        for (int i = 1; i < 11; i++) {
-            System.out.print(getChar(1, i));
+        for (int i = 0; i < 10; i++) {
+            System.out.print(getChar(0, i));
         }
         System.out.print("|    ");
-        System.out.print(Main.blue.get(0));
-        tabSetter(Main.blue.get(0).toString().length(), l);
-        System.out.println(Main.red.get(0));
+        System.out.print(Main.bluePersons.get(0));
+        tabSetter(Main.bluePersons.get(0).toString().length(), l);
+        System.out.println(Main.greenPersons.get(0));
         System.out.println(midl10);
 
-        for (int i = 2; i < 10; i++) {
-            for (int j = 1; j < 11; j++) {
+        for (int i = 1; i < 9; i++) {
+            for (int j = 0; j < 10; j++) {
                 System.out.print(getChar(i, j));
             }
             System.out.print("|    ");
-            System.out.print(Main.blue.get(i-1));
-            tabSetter(Main.blue.get(i-1).toString().length(), l);
-            System.out.println(Main.red.get(i-1));
+            System.out.print(Main.bluePersons.get(i));
+            tabSetter(Main.bluePersons.get(i).toString().length(), l);
+            System.out.println(Main.greenPersons.get(i));
             System.out.println(midl10);
         }
-        for (int j = 1; j < 11; j++) {
-            System.out.print(getChar(10, j));
+        for (int j = 0; j < 10; j++) {
+            System.out.print(getChar(9, j));
         }
         System.out.print("|    ");
-        System.out.print(Main.blue.get(9));
-        tabSetter(Main.blue.get(9).toString().length(), l);
-        System.out.println(Main.red.get(9));
+        System.out.print(Main.bluePersons.get(9));
+        tabSetter(Main.bluePersons.get(9).toString().length(), l);
+        System.out.println(Main.greenPersons.get(9));
         System.out.println(bottom10);
     }
 }

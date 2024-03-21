@@ -90,10 +90,6 @@ public abstract class PersonBase implements ActionInterface {
         return position;
     }
 
-    public int[] getCoords()
-    {
-        return new int[] {position.getY(), position.getX()};
-    }
 
     /**
      * Лечение персонажа

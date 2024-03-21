@@ -34,10 +34,9 @@ public class View {
         String out = "| ";
         for (PersonBase human: Main.allPersons)
         {
-//            CoordXY pos = human.getPosition();
-//            if (pos.getX() == x && pos.getY() == y)
-//            {
-            if (human.getCoords()[0] == x && human.getCoords()[1] == y){
+            CoordXY pos = human.getPosition();
+            if (pos.getX() == x && pos.getY() == y)
+            {
                 if (human.getHealth() == 0)
                 {
                     out = "|" + (AnsyView.ANSI_RED + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
@@ -66,8 +65,8 @@ public class View {
         //for (int i = 0; i < l[0]-9; i++)
         System.out.print(" ".repeat(l-9));
         System.out.println(":\tGreen side");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(getChar(0, i));
+        for (int x = 0; x < 10; x++) {
+            System.out.print(getChar(x, 0));        // old: System.out.print(getChar(0, x));
         }
         System.out.print("|    ");
         System.out.print(Main.bluePersons.get(0));
@@ -75,18 +74,19 @@ public class View {
         System.out.println(Main.greenPersons.get(0));
         System.out.println(midl10);
 
-        for (int i = 1; i < 9; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(getChar(i, j));
+        for (int y = 1; y < 9; y++)
+        {
+            for (int x = 0; x < 10; x++) {
+                System.out.print(getChar(x, y));    // old: System.out.print(getChar(y, x));
             }
             System.out.print("|    ");
-            System.out.print(Main.bluePersons.get(i));
-            tabSetter(Main.bluePersons.get(i).toString().length(), l);
-            System.out.println(Main.greenPersons.get(i));
+            System.out.print(Main.bluePersons.get(y));
+            tabSetter(Main.bluePersons.get(y).toString().length(), l);
+            System.out.println(Main.greenPersons.get(y));
             System.out.println(midl10);
         }
-        for (int j = 0; j < 10; j++) {
-            System.out.print(getChar(9, j));
+        for (int x = 0; x < 10; x++) {
+            System.out.print(getChar(x, 9));        // old: System.out.print(getChar(9, x));
         }
         System.out.print("|    ");
         System.out.print(Main.bluePersons.get(9));

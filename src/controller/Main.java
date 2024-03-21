@@ -30,7 +30,6 @@ public class Main {
     public static void main(String[] args) {
         createTeam(greenPersons, 10, 0);
         createTeam(bluePersons, 10, 3);
-        System.out.println(greenPersons);
         allPersons.addAll(bluePersons);
         allPersons.addAll(greenPersons);
 //        all.sort(new PrioritySort());
@@ -86,25 +85,25 @@ public class Main {
             switch (n)
             {
                 case 0:
-                    team.add(new Crossbowman(HeroesNames.getRandomName(), new CoordXY(0, cy)));
+                    team.add(new Crossbowman(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 1:
-                    team.add(new Spearman(HeroesNames.getRandomName(), new CoordXY(0, cy)));
+                    team.add(new Spearman(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 2:
-                    team.add(new Wizard(HeroesNames.getRandomName(), new CoordXY(0, cy)));
+                    team.add(new Wizard(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 3:
-                    team.add(new Peasant(HeroesNames.getRandomName(), new CoordXY(start*3, cy)));
+                    team.add(new Peasant(HeroesNames.getRandomName(), new CoordXY((3-start)*3, cy)));
                     break;
                 case 4:
-                    team.add(new Sniper(HeroesNames.getRandomName(), new CoordXY(9, cy)));
+                    team.add(new Sniper(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 5:
-                    team.add(new Monk(HeroesNames.getRandomName(), new CoordXY(9, cy)));
+                    team.add(new Monk(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 6:
-                    team.add(new Robber(HeroesNames.getRandomName(), new CoordXY(9, cy)));
+                    team.add(new Robber(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 default:
                     System.out.println("ERROR! Пересмотри алгоритм, ламер!");

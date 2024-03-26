@@ -38,17 +38,21 @@ public class Main {
 //        for (int i = 0; i < 30; i++) {
         Scanner in = new Scanner(System.in);
         while (true)
-          {
+        {
+//            for (PersonBase p : allPersons) {
+//                System.out.println(p.getInfo());
+//            }
+
             View.view();
+
             for (PersonBase p : allPersons) {
-//                System.out.print(p + " ходит. ");
                 if (greenPersons.contains(p)) {
                     p.step(bluePersons, greenPersons);
 
                 } else {
                     p.step(greenPersons, bluePersons);
                 }
-//                System.out.println();
+                System.out.println(p.getInfo());
             }
             in.nextLine();
             if (!isLiving(greenPersons))

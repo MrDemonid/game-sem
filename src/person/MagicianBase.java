@@ -53,8 +53,7 @@ public abstract class MagicianBase extends PersonBase {
 
         if (health <= 0)
             return;
-
-        mana += MANA_RECOVERY;
+        mana = Math.min(mana + MANA_RECOVERY, maxMana);
 
         if (isWaitResurrection(friends))
             return;
@@ -146,27 +145,26 @@ public abstract class MagicianBase extends PersonBase {
      *
      * @param friends Список персов
      */
-    private void doHeal(ArrayList<PersonBase> friends) {
+    private void doHeal(ArrayList<PersonBase> friends)
+    {
         int min = Integer.MAX_VALUE;
         PersonBase p = null;
-        for (PersonBase friend : friends) {
+        for (PersonBase friend : friends)
+        {
             int hp = friend.getHealth() * 100 / friend.getMaxHealth();
             if (hp > 0 && hp < min) {
                 min = hp;
                 p = friend;
             }
         }
-        if (p != null && min < 100) {
-            int n = Math.min(mana, COST_HEALED);
-            mana -= n;
+        if (p != null && min < 100)
+        {
             int hp = p.getHealth();
-            if (p.getMaxHealth()-hp < (n * MANA_TO_HEAL)*2/3)
-            {
-                history = String.format(" нет смысла лечить %s", p);
-            } else {
-                p.healed(n * MANA_TO_HEAL);
-                history = String.format(" вылечил %s на %d пунктов здоровья", p, p.getHealth()-hp);
-            }
+            int needMana = (p.getMaxHealth() - hp) / MANA_TO_HEAL;      // кол-во маны для полного лечения
+            int n = Math.min(mana, Math.min(needMana, COST_HEALED));
+            mana -= n;
+            p.healed(n * MANA_TO_HEAL);
+            history = String.format(" вылечил %s на %d пунктов здоровья", p, p.getHealth()-hp);
         } else {
             history = String.format(" пропускает ход.");
         }

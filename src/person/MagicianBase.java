@@ -160,8 +160,13 @@ public abstract class MagicianBase extends PersonBase {
             int n = Math.min(mana, COST_HEALED);
             mana -= n;
             int hp = p.getHealth();
-            p.healed(n * MANA_TO_HEAL);
-            history = String.format(" вылечил %s на %d пунктов здоровья", p, p.getHealth()-hp);
+            if (p.getMaxHealth()-hp < (n * MANA_TO_HEAL)*2/3)
+            {
+                history = String.format(" нет смысла лечить %s", p);
+            } else {
+                p.healed(n * MANA_TO_HEAL);
+                history = String.format(" вылечил %s на %d пунктов здоровья", p, p.getHealth()-hp);
+            }
         } else {
             history = String.format(" пропускает ход.");
         }

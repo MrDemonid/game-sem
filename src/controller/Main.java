@@ -30,8 +30,8 @@ public class Main {
     public static void main(String[] args) {
         createTeam(greenPersons, 10, 0);
         createTeam(bluePersons, 10, 3);
-        setDied(greenPersons,5);
-        setManas(greenPersons,30);
+//        setDied(greenPersons,5);
+//        setManas(greenPersons,30);
         allPersons.addAll(bluePersons);
         allPersons.addAll(greenPersons);
 //        all.sort(new PrioritySort());

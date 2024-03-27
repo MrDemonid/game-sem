@@ -42,6 +42,10 @@ public abstract class MagicianBase extends PersonBase {
         this.respawnTarget = null;
     }
 
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
     @Override
     public void step(ArrayList<PersonBase> enemies, ArrayList<PersonBase> friends)
     {
@@ -65,18 +69,33 @@ public abstract class MagicianBase extends PersonBase {
 
     private void beginResurrection(ArrayList<PersonBase> friends)
     {
-        PersonBase p = friends.stream()
-                                .filter(n -> n.health == 0)
-                                .sorted((n1, n2) -> n2.priority - n1.priority)
-                                .collect(Collectors.toList())
-                                .getFirst();
+//        PersonBase p = friends.stream().filter(n -> n.health == 0).sorted((n1, n2) -> n2.priority - n1.priority).collect(Collectors.toList()).getFirst();
+        /*
+            Ищем подходящую кандидатуру для воскрешения
+         */
+        PersonBase p = null;
+        int max = -1;
+        for (PersonBase person : friends)
+        {
+            if (person.getHealth() < 0 && mana >= resurrectMana)
+            {
+                p = person;                 // нашли ожидающего, он у нас в приоритете
+                break;
+            }
+            if (person.getHealth() == 0 && max < person.getPriority())
+            {
+                p = person;
+                max = person.getPriority();
+            }
+        }
+
         if (p != null)
         {
+            respawnTarget = p;
             if (mana >= resurrectMana)
             {
                 doResurrection(p);
             } else {
-                respawnTarget = p;
                 respawnTarget.health = -1;      // помечаем как ожидающего воскрешение
                 history = String.format(" восстанавливает ману для воскрешения %s", respawnTarget);
             }
@@ -111,7 +130,7 @@ public abstract class MagicianBase extends PersonBase {
      */
     private void doResurrection(PersonBase person)
     {
-        if (respawnTarget.getHealth() < 0)
+        if (respawnTarget.getHealth() <= 0)
         {
             person.healed(respawnTarget.getMaxHealth());
             mana -= resurrectMana;
